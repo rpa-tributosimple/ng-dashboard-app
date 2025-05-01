@@ -1,0 +1,86 @@
+<p-card class="card-consulta" header="Consultar Tarea por Servicio e ID">
+  <div class="formulario-container">
+    <!-- Servicio -->
+    <div class="p-field">
+      <label for="service" class="titulo">Servicio</label>
+      <p-dropdown 
+        [options]="services" 
+        [(ngModel)]="selectedService" 
+        optionLabel="name" 
+        placeholder="Seleccione un servicio" 
+        [showClear]="true"
+        styleClass="w-full"
+      ></p-dropdown>
+    </div>
+    
+    <!-- ID de la Tarea -->
+    <div class="p-field">
+      <label for="serviceId" class="titulo">ID de la Tarea</label>
+      <input 
+        id="serviceId" 
+        type="text" 
+        pInputText 
+        [(ngModel)]="taskId" 
+        placeholder="Ingrese el ID de la tarea"
+        pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+        class="w-full"
+      />
+    </div>
+    
+    <!-- Contenedor para los botones -->
+    <div class="botones-container">
+      <!-- Botón Consultar -->
+      <button 
+        pButton 
+        label="Consultar" 
+        icon="pi pi-search" 
+        (click)="searchTask()" 
+        [disabled]="!selectedService || !isValidUuid(taskId)"
+        class="flex-1 p-button-lg"
+      ></button>
+      
+      <!-- Botón Limpiar -->
+      <button 
+        pButton 
+        label="Limpiar" 
+        icon="pi pi-trash" 
+        (click)="clearResults()" 
+        class="p-button-outlined p-button-secondary flex-1 p-button-lg"
+      ></button>
+    </div>
+    
+    <!-- Resultados de la búsqueda -->
+    <div *ngIf="result" class="resultados-container">
+      <div *ngIf="result['Tareas Faltantes'] !== undefined" class="p-4 bg-yellow-100 text-yellow-700 border-round">
+        <h3 class="mt-0 mb-3">Estado:</h3>
+        <p>Tareas faltantes: {{ result['Tareas Faltantes'] }}</p>
+      </div>
+      
+      <div *ngIf="result.Tarea" class="mt-4">
+        <h3 class="mb-3">Detalles de la Tarea:</h3>
+        <div class="grid">
+          <div *ngFor="let item of getObjectEntries(result.Tarea)" class="col-12 md:col-6">
+            <div class="p-3 border-bottom-1 border-200">
+              <strong>{{ item.key }}:</strong> {{ item.value }}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="result['Tareas Faltantes'] === undefined && !result.Tarea">
+        <div class="grid">
+          <div *ngFor="let item of getObjectEntries(result)" class="col-12 md:col-6">
+            <div class="p-3 border-bottom-1 border-200">
+              <strong>{{ item.key }}:</strong> {{ item.value }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mensaje cuando no hay resultados -->
+    <div *ngIf="!result && taskId && selectedService && searchAttempted " class="p-4 bg-gray-100 text-gray-700 border-round">
+      No se encontraron resultados para la búsqueda.
+    </div>
+  </div>
+</p-card>

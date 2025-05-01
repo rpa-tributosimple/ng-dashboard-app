@@ -1,0 +1,64 @@
+/* Estilos para solucionar el problema de espaciado vertical */
+
+/* Aumentar espaciado general del card */
+:host ::ng-deep .p-card {
+    margin-bottom: 1rem;
+    min-height: 200px !important;
+  }
+  
+  :host ::ng-deep .p-card .p-card-content {
+    padding: 0.5rem !important;
+  }
+  
+  /* Forzar separación vertical entre campos con !important */
+  .p-field {
+    margin-bottom: 0.5rem !important;
+    position: relative !important;
+    display: block !important;
+    min-height: 50px !important;
+  }
+  
+  /* Aumentar el espacio para las etiquetas */
+  .p-field label {
+    margin-bottom: 0.75rem !important;
+    display: block !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+  }
+  
+  /* Hacer que los controles sean más altos */
+  :host ::ng-deep .p-dropdown {
+    height: 50px !important;
+  }
+  
+  :host ::ng-deep .p-inputtext {
+    height: 50px !important;
+    font-size: 1.1rem !important;
+  }
+  
+ 
+  
+  /* Separación para los botones */
+  .botones-container {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    gap: 0.5rem !important;
+  }
+  
+  .botones-container button {
+    height: 50px !important;
+    font-size: 1.1rem !important;
+  }
+  
+  /* Sección de resultados */
+  .resultados-container {
+    margin-top: 3rem !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid #1a1010;
+  }
+  
+  /* Override de cualquier otra regla que podría estar causando problemas */
+  .p-fluid .p-field:not(:last-child) {
+    margin-bottom: 2.5rem !important;
+  }
