@@ -32,7 +32,7 @@ export class TasksComponent implements OnInit {
     this.loading = true;
     this.dashboardService.getReadyTasks().subscribe({
       next: (res) => {
-        console.log(res);
+        console.log(res); 
         
         if (res.finished_tasks) {
           const data = res.finished_tasks;

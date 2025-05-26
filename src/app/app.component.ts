@@ -16,6 +16,8 @@ import { TasksComponent } from '../app/components/tasks/tasks.component';
 import { QueueComponent } from '../app/components/queue/queue.component';
 import { TaskByIdComponent } from '../app/components/task-by-id/task-by-id.component';
 import { TaskByServiceComponent } from '../app/components/task-by-service/task-by-service.component';
+import { ChartComponent } from "./components/chart/chart.component";
+
 
 @Component({
   selector: 'app-root',
@@ -35,8 +37,9 @@ import { TaskByServiceComponent } from '../app/components/task-by-service/task-b
     TasksComponent,
     QueueComponent,
     TaskByIdComponent,
-    TaskByServiceComponent
-  ],
+    TaskByServiceComponent,
+    ChartComponent
+],
   providers: [DashboardService, MessageService],
   template: `
     <div class="container">
@@ -63,6 +66,17 @@ import { TaskByServiceComponent } from '../app/components/task-by-service/task-b
               <app-task-by-service></app-task-by-service>
             </div>
           </div>
+        </p-tabPanel>
+        <p-tabPanel header="Tablas" >
+          
+       
+        <p-card >
+          <app-chart></app-chart>
+        </p-card>
+
+       
+        
+
         </p-tabPanel>
       </p-tabView>
     </div>
