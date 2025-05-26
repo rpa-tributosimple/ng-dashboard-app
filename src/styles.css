@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+.botones-control button {
+    margin-right: 10px;
+    margin-bottom: 15px;
+    vertical-align: middle
+    
+  }
+
+  .botones-control {
+    display: flex;
+    justify-content: space-between; /* Esto los empuja al lado derecho */
+    margin-bottom: 15px;
+    gap: 10px; /* Espacio entre botones (mejor que margin-right individual) */
+    align-items: center; /* Alineación vertical */
+  }
+
+  .monthTitle{
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-refrescar{
+    margin: 10px
+  }
+
+.card{
+    margin: 1px solid black ;
+}

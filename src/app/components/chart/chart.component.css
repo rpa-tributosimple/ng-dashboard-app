@@ -1,0 +1,12 @@
+/* ngx-charts-bar-vertical {
+    width: 100%;
+    height: 400px;
+  } */
+
+  :host ::ng-deep ngx-charts-bar-vertical {
+    height: 250px; /* o el valor que prefieras */
+    display: block;
+   
+  }
+
+

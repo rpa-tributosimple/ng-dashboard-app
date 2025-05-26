@@ -1,0 +1,29 @@
+
+
+<div class="monthTitle">
+  <h3  >{{ monthTitle }}</h3>
+</div>
+
+<div class="botones-control">
+  <h2 class="titulo">Tareas Completadas por Servicio</h2>
+  <div class="botones">
+    <p-button label="Mes Anterior" variant="outlined" [raised]="true" icon="pi pi-chevron-left" (click)="cambiarMes(-1)"></p-button>
+    <p-button label="Mes Siguiente" variant="outlined" [raised]="true" icon="pi pi-chevron-right" iconPos="right" (click)="cambiarMes(1)"></p-button>
+  </div>
+</div>
+
+
+    <ngx-charts-bar-vertical
+      [results]="chartData"
+      [scheme]="colorScheme"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showDataLabel]="true"
+      [barPadding]="8"
+      [roundEdges]="true"
+      
+    >
+    </ngx-charts-bar-vertical>
+
+    
