@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ButtonModule } from 'primeng/button';
+import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
@@ -12,6 +13,8 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['chart.component.css']
 })
 export class ChartComponent implements OnInit {
+
+  private baseUrl = environment.baseUrl;
 
   chartData: any[] = [];
   colorScheme = 'vivid';
@@ -25,9 +28,9 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     this.loadChartData();
   }
-
+ 
   loadChartData() {
-    this.http.get<any>(`http://localhost:8000/chart/summary?month_offset=${this.monthOffset}`)
+    this.http.get<any>(`${this.baseUrl}/chart/summary?month_offset=${this.monthOffset}`)
       .subscribe(response => {
         const data = response.individuals_ready_tasks;
         this.monthTitle = response.month
